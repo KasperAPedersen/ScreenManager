@@ -1,0 +1,14 @@
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\bin\Debug\net8.0\ScreenManager.exe
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\bin\Debug\net8.0\ScreenManager.deps.json
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\bin\Debug\net8.0\ScreenManager.runtimeconfig.json
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\bin\Debug\net8.0\ScreenManager.dll
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\bin\Debug\net8.0\ScreenManager.pdb
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.AssemblyInfoInputs.cache
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.AssemblyInfo.cs
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.csproj.CoreCompileInputs.cache
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.dll
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\refint\ScreenManager.dll
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.pdb
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ScreenManager.genruntimeconfig.cache
+C:\Users\zbc23kaped\source\repos\ScreenManager\ScreenManager\obj\Debug\net8.0\ref\ScreenManager.dll
