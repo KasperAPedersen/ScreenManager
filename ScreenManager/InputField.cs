@@ -8,21 +8,17 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ScreenManager
 {
-    internal class InputField
+    internal class InputField : Object
     {
-        public static void InsertAt(int left, int top, int padding)
+        private int left = 0, top = 0;
+
+        public int GetLeft { get { return left; } }
+        public int GetTop { get { return top; } }
+
+        public InputField(int _left, int _top)
         {
-
-            Object.InsertAt(left, top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), 20)) + GetPart(BoxBorderPart.TopRight) + "\n")));
-            Object.InsertAt(left, top + 1, (string.Concat(GetPart(BoxBorderPart.Left) + string.Concat(Enumerable.Repeat(" ", 20)) + GetPart(BoxBorderPart.Right))));
-            Object.InsertAt(left, top + 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), 20)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
-
-            Console.SetCursorPosition(left + padding + 1, top + 1);
-            string tmp = Console.ReadLine();
-            
-            if (tmp.Length > 20) tmp = "Invalid";
-            Console.SetCursorPosition(left, top + 1);
-            Object.InsertAt(left, top + 1, (string.Concat(GetPart(BoxBorderPart.Left) + Aligner.Align(tmp, Alignment.Center, 20, " ") + GetPart(BoxBorderPart.Right))));
+            this.left = _left;
+            this.top = _top;
 
         }
     }

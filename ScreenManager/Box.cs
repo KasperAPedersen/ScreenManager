@@ -6,25 +6,37 @@ using System.Threading.Tasks;
 
 namespace ScreenManager
 {
-    internal class Box
+    internal class Box : Object
     {
-        internal static void Draw(int width, int height, int left, int top, bool erase)
+        private int left = 0, top = 0, width = 0, height = 0;
+
+        public int GetLeft { get { return left; } }
+        public int GetTop { get { return top; } }
+        public int GetWidth { get { return width; } }
+        public int GetHeight { get { return height; } }
+
+        public Box(int _width, int _height, int _left, int _top, bool _erase)
         {
-            if (erase)
+            this.left = _left;
+            this.top = _top;
+            this.width = _width;
+            this.height = _height;
+
+            if (_erase)
             {
-                Object.ClearArea(left, top, width, height);
+                ClearArea(this.left, this.top, this.width, this.height);
             }
             else
             {
-                Object.InsertAt(left, top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), width - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")));
+                InsertAt(left, this.top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.width - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")));
 
-                for (int i = 1; i < height - 1; i++)
+                for (int i = 1; i < this.height - 1; i++)
                 {
-                    Object.InsertAt(left, top + i, GetPart(BoxBorderPart.Left));
-                    Object.InsertAt(left + width - 1, top + i, GetPart(BoxBorderPart.Right));
+                    InsertAt(left, this.top + i, GetPart(BoxBorderPart.Left));
+                    InsertAt(left + this.width - 1, _top + i, GetPart(BoxBorderPart.Right));
                 }
 
-                Object.InsertAt(left, top + height - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), width - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
+                InsertAt(left, this.top + this.height - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.width - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
             }
         }
 
@@ -40,9 +52,9 @@ namespace ScreenManager
             BottomRight
         }
 
-        static public string GetPart(BoxBorderPart part)
+        static public string GetPart(BoxBorderPart _part)
         {
-            return part switch
+            return _part switch
             {
                 BoxBorderPart.TopLeft => "┌",
                 BoxBorderPart.Top => "─",
