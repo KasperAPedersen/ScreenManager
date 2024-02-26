@@ -8,17 +8,24 @@ namespace ScreenManager
 {
     internal class Box
     {
-        internal static void Draw(int width, int height, int left, int top, string pHeader, string pFooter, Alignment pHeaderAlignment, Alignment pFooterAlignment)
+        internal static void Draw(int width, int height, int left, int top, bool erase)
         {
-            Object.InsertAt(left, top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + Aligner.Align(pHeader, pHeaderAlignment, width - (GetPart(BoxBorderPart.TopLeft).Length) - (GetPart(BoxBorderPart.TopRight).Length), GetPart(BoxBorderPart.Top)) + GetPart(BoxBorderPart.TopRight) + "\n")));
-
-            for(int i = 1; i < height - 1; i++)
+            if (erase)
             {
-                Object.InsertAt(left, top + i, GetPart(BoxBorderPart.Left));
-                Object.InsertAt(left + width - 1, top + i, GetPart(BoxBorderPart.Right));
+                Object.ClearArea(left, top, width, height);
             }
+            else
+            {
+                Object.InsertAt(left, top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), width - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")));
 
-            Object.InsertAt(left, top + height - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + Aligner.Align(pHeader, pFooterAlignment, width - (GetPart(BoxBorderPart.BottomLeft).Length) - (GetPart(BoxBorderPart.BottomRight).Length), GetPart(BoxBorderPart.Top)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
+                for (int i = 1; i < height - 1; i++)
+                {
+                    Object.InsertAt(left, top + i, GetPart(BoxBorderPart.Left));
+                    Object.InsertAt(left + width - 1, top + i, GetPart(BoxBorderPart.Right));
+                }
+
+                Object.InsertAt(left, top + height - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), width - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
+            }
         }
 
         internal enum BoxBorderPart

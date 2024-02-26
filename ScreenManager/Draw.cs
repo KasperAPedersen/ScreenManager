@@ -8,6 +8,7 @@ namespace ScreenManager
 {
     internal class Object
     {
+        
         public static void ClearArea(int left, int top, int width, int height)
         {
             Console.SetCursorPosition(left, top);
