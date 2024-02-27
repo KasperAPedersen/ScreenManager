@@ -11,7 +11,7 @@ TextField innerMarginTitle = new(3, 2, "CRUDapp", ConsoleColor.Red);
 bool bKeepRunning = true, bToggleCreateUserButton = false;
 while(bKeepRunning)
 {
-    Console.ForegroundColor = ConsoleColor.Black;
+    //Console.ForegroundColor = ConsoleColor.Black;
     Console.SetCursorPosition(cWidth - 1, cHeight - 3);
 
     switch (Console.ReadKey().Key)
@@ -20,16 +20,13 @@ while(bKeepRunning)
             bKeepRunning = false;
             break;
         case ConsoleKey.C:
-            if (bToggleCreateUserButton)
-            {
-                ScreenManager.Object.ClearArea(button.GetLeft, button.GetTop, button.GetWidth, button.GetHeight);
-                button = new(cWidth - 20, 2, "Create User", 1);
-            } else
-            {
-                ScreenManager.Object.ClearArea(button.GetLeft, button.GetTop, button.GetWidth, button.GetHeight);
-                button = new(cWidth - 20, 2, "Create User", 1, ConsoleColor.Red);
-            }
+            ScreenManager.Object.ClearArea(button.GetLeft, button.GetTop, button.GetWidth, button.GetHeight);
+            button = new(cWidth - 20, 2, "Create User", 1, !bToggleCreateUserButton ? ConsoleColor.Red : ConsoleColor.White);
             bToggleCreateUserButton = !bToggleCreateUserButton;
+            break;
+        case ConsoleKey.T:
+            string[] titles = { "abc", "def", "ghi", "jkl", "opq" };
+            Table testTable = new(5, 5, 25, 25, titles, titles);
             break;
         default:
             break;
