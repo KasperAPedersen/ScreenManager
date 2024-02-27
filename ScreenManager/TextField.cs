@@ -8,20 +8,14 @@ namespace ScreenManager
 {
     internal class TextField : Object
     {
-        private int left = 0, top = 0;
-        private string text = "";
+        private readonly string text = "";
 
-        public int GetLeft { get { return left; } }
-        public int GetTop { get { return top; } }
         public string GetText { get { return text; } }
 
-        public TextField(int _left, int _top, string _text)
+        public TextField(int _left, int _top, string _text, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _text.Length, 1)
         {
-            this.left = _left;
-            this.top = _top;
             this.text = _text;
-
-            InsertAt(this.left, this.top, this.text);
+            InsertAt(this.GetLeft, this.GetTop, this.text, _color);
         }
     }
 }

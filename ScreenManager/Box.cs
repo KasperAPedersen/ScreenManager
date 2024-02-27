@@ -8,35 +8,23 @@ namespace ScreenManager
 {
     internal class Box : Object
     {
-        private int left = 0, top = 0, width = 0, height = 0;
-
-        public int GetLeft { get { return left; } }
-        public int GetTop { get { return top; } }
-        public int GetWidth { get { return width; } }
-        public int GetHeight { get { return height; } }
-
-        public Box(int _width, int _height, int _left, int _top, bool _erase)
+        public Box(int _width, int _height, int _left, int _top, bool _erase, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _width, _height)
         {
-            this.left = _left;
-            this.top = _top;
-            this.width = _width;
-            this.height = _height;
-
             if (_erase)
             {
-                ClearArea(this.left, this.top, this.width, this.height);
+                ClearArea(this.GetLeft, this.GetTop, this.GetWidth, this.GetHeight);
             }
             else
             {
-                InsertAt(left, this.top, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.width - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")));
+                InsertAt(this.GetLeft, this.GetTop, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")), _color);
 
-                for (int i = 1; i < this.height - 1; i++)
+                for (int i = 1; i < this.GetHeight - 1; i++)
                 {
-                    InsertAt(left, this.top + i, GetPart(BoxBorderPart.Left));
-                    InsertAt(left + this.width - 1, _top + i, GetPart(BoxBorderPart.Right));
+                    InsertAt(this.GetLeft, this.GetTop + i, GetPart(BoxBorderPart.Left), _color);
+                    InsertAt(this.GetLeft + this.GetWidth - 1, this.GetTop + i, GetPart(BoxBorderPart.Right), _color);
                 }
 
-                InsertAt(left, this.top + this.height - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.width - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")));
+                InsertAt(this.GetLeft, this.GetTop + this.GetHeight - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")), _color);
             }
         }
 
