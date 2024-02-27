@@ -26,7 +26,7 @@ while(bKeepRunning)
             break;
         case ConsoleKey.T:
             string[] titles = { "abc", "def", "ghi", "jkl", "opq" };
-            Table testTable = new(5, 5, 25, 25, titles, titles);
+            Table testTable = new(5, 5, 50, 25, titles);
             break;
         default:
             break;
