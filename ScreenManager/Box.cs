@@ -37,7 +37,13 @@ namespace ScreenManager
             Right,
             BottomLeft,
             Bottom,
-            BottomRight
+            BottomRight,
+            LeftMiddle,
+            RightMiddle,
+            Cross,
+            Middle,
+            TopMiddle,
+            BottomMiddle
         }
 
         static public string GetPart(BoxBorderPart _part)
@@ -52,6 +58,12 @@ namespace ScreenManager
                 BoxBorderPart.BottomLeft => "└",
                 BoxBorderPart.Bottom => "─",
                 BoxBorderPart.BottomRight => "┘",
+                BoxBorderPart.LeftMiddle => "├",
+                BoxBorderPart.RightMiddle => "┤",
+                BoxBorderPart.Cross => "┼",
+                BoxBorderPart.Middle => "│",
+                BoxBorderPart.TopMiddle => "┬",
+                BoxBorderPart.BottomMiddle => "┴",
                 _ => throw new InvalidOperationException("Unknown border part."),
             };
         }

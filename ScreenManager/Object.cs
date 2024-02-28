@@ -10,12 +10,15 @@ namespace ScreenManager
     internal class Object
     {
         public static int objectCounter = 0;
-        private readonly int left = 0, top = 0, width = 0, height = 0;
+        private readonly int left = 0, top = 0;
+        private int width = 0, height = 0;
 
         public int GetLeft { get { return left; } }
         public int GetTop { get { return top; } }
         public int GetWidth { get { return width; } }
+        public int SetWidth { set { width = value; } }
         public int GetHeight { get { return height; } }
+        public int SetHeight { set { height = value; } }
 
         public Object(int _left, int _top, int _width, int _height)
         {

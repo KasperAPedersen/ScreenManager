@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\inputfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\inputfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\draw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\draw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\button.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\button.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\table.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\tablecontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\tablecontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\object.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\object.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\box.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,6 +25,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\textfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\textfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\button.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|solutionrelative:screenmanager\\button.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68B9313A-2A97-41F0-B9A9-B2F54358FFF9}|ScreenManager\\ScreenManager.csproj|c:\\users\\zbc23kaped\\source\\repos\\screenmanager\\screenmanager\\align.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,19 +42,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InputField.cs",
-              "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\InputField.cs",
-              "RelativeDocumentMoniker": "ScreenManager\\InputField.cs",
-              "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\InputField.cs",
-              "RelativeToolTip": "ScreenManager\\InputField.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAIwBUAAAAMAAAA",
+              "DocumentIndex": 2,
+              "Title": "TableContent.cs",
+              "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\TableContent.cs",
+              "RelativeDocumentMoniker": "ScreenManager\\TableContent.cs",
+              "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\TableContent.cs",
+              "RelativeToolTip": "ScreenManager\\TableContent.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAWwA4AAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-26T14:17:46.273Z",
+              "WhenOpened": "2024-02-28T10:31:18.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Table.cs",
+              "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Table.cs",
+              "RelativeDocumentMoniker": "ScreenManager\\Table.cs",
+              "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Table.cs",
+              "RelativeToolTip": "ScreenManager\\Table.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAWwA0AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T06:52:28.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Object.cs",
+              "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Object.cs",
+              "RelativeDocumentMoniker": "ScreenManager\\Object.cs",
+              "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Object.cs",
+              "RelativeToolTip": "ScreenManager\\Object.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAWwA8AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T07:01:27.06Z",
               "EditorCaption": ""
             },
             {
@@ -61,40 +91,27 @@
               "RelativeDocumentMoniker": "ScreenManager\\TextField.cs",
               "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\TextField.cs",
               "RelativeToolTip": "ScreenManager\\TextField.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-26T14:14:07.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Button.cs",
               "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Button.cs",
               "RelativeDocumentMoniker": "ScreenManager\\Button.cs",
               "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Button.cs",
               "RelativeToolTip": "ScreenManager\\Button.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAIwA0AAAAMAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAIwA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-26T13:16:27.249Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Draw.cs",
-              "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Draw.cs",
-              "RelativeDocumentMoniker": "ScreenManager\\Draw.cs",
-              "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Draw.cs",
-              "RelativeToolTip": "ScreenManager\\Draw.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAowBoAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-26T11:16:41.405Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "align.cs",
               "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\align.cs",
               "RelativeDocumentMoniker": "ScreenManager\\align.cs",
@@ -113,20 +130,20 @@
               "RelativeDocumentMoniker": "ScreenManager\\Box.cs",
               "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Box.cs",
               "RelativeToolTip": "ScreenManager\\Box.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAARAAAA",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAYwC0AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-23T09:11:11.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Program.cs",
               "RelativeDocumentMoniker": "ScreenManager\\Program.cs",
               "ToolTip": "C:\\Users\\zbc23kaped\\source\\repos\\ScreenManager\\ScreenManager\\Program.cs",
               "RelativeToolTip": "ScreenManager\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAA4AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-22T14:30:25.364Z",
               "EditorCaption": ""

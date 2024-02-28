@@ -11,46 +11,100 @@ namespace ScreenManager
 {
     internal class Table : Object
     {
-        private string[] tableTitles;
+        private readonly int difference = 0;
+        private readonly string[] tableTitles;
+        private readonly string[,] tableContents;
+        private int startHeight = 0;
 
         public string[] GetTitles { get { return tableTitles; } }
+        public string[,] GetContents { get { return tableContents; } }
+        public int GetStartHeight { get { return startHeight; } }
+        public int GetDifference { get { return difference; } }
 
-        public Table(int _left, int _top, int _width, int _height, string[] _tableTitles, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _width, _height)
+        internal Table(int _left, int _top, int _width, int _height, string[] _tableTitles, string[,] _tableContents, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _width, _height)
         {
-            /////////////////////////////////////////////////////
-            /// TODO: Correct the width & height for base object
-            /// TODO: Create the contentlines
-            ///´/////////////////////////////////////////////////
-
             this.tableTitles = _tableTitles;
+            this.tableContents = _tableContents;
+            this.difference = this.GetWidth / this.tableTitles.Length - 1;
 
-            // Get the difference of all the titles and the total width
-            int difference = this.GetWidth;
+            // Build header
+            CreateTableHeader(_color);
+
+            // Build content
+            //CreateTableContent();
+
+            // Building bottom
+            CreateTableBottom(_color);
+        }
+
+        internal void CreateTableContent(ConsoleColor _color = ConsoleColor.White)
+        {
+            int newHeight = this.GetHeight;
+            for (int i = 0; i < this.tableContents.GetLength(0); i++)
+            {
+                string text = "";
+                for (int o = 0; o < this.tableContents.GetLength(1); o++)
+                {
+                    text += Aligner.Align(this.tableContents[i,o], Alignment.Center, this.difference, " ");
+                    text += GetPart(BoxBorderPart.Middle);
+                }
+                text = text.Remove(text.Length - 1, 1);
+                InsertAt(this.GetLeft, this.GetTop + newHeight, (string.Concat(GetPart(BoxBorderPart.Left) + text + GetPart(BoxBorderPart.Right))), _color);
+                newHeight++;
+            }
+            this.SetHeight = newHeight;
+        }
+
+        internal void CreateTableHeader(ConsoleColor _color = ConsoleColor.White) 
+        {
+            // top border
+            string topBorder = GetPart(BoxBorderPart.TopLeft);
             foreach (string title in tableTitles)
             {
-                difference -= title.Length;
+                topBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.difference));
+                if(tableTitles.Last() != title)topBorder += GetPart(BoxBorderPart.TopMiddle);
             }
-            
-            // Divide the width difference with the number of titles
-            difference /= this.tableTitles.Length;
+            InsertAt(this.GetLeft, this.GetTop, string.Concat(topBorder + GetPart(BoxBorderPart.TopRight)), _color);
 
-            // Add the difference in padding to each table title and concat everything into a new string (tmp)
-            string text = "";
+            // header content
+            string headerContent = GetPart(BoxBorderPart.Middle);
             foreach (string title in tableTitles)
             {
-                text += string.Concat(string.Concat(Enumerable.Repeat(" ", difference / 2)) + title + string.Concat(Enumerable.Repeat(" ", difference / 2)));
-                if (tableTitles.Last() != title) text += "|";
+                headerContent += Aligner.Align(title, Alignment.Center, this.difference, " ");
+                headerContent += GetPart(BoxBorderPart.Middle);
             }
 
-            // Building table header
-            InsertAt(this.GetLeft, this.GetTop, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), text.Length)) + GetPart(BoxBorderPart.TopRight) + "\n")), _color);
-            InsertAt(this.GetLeft, this.GetTop + 1, (string.Concat(GetPart(BoxBorderPart.Left) + text + GetPart(BoxBorderPart.Right))), _color);
-            InsertAt(this.GetLeft, this.GetTop + 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), text.Length)) + GetPart(BoxBorderPart.BottomRight) + "\n")), _color);
+            InsertAt(this.GetLeft, this.GetTop + 1, headerContent, _color);
 
-            // Generate content lines here
+            // bottom border
+            string bottomBorder = GetPart(BoxBorderPart.LeftMiddle);
+            foreach (string title in tableTitles)
+            {
+                bottomBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.difference));
+                if (tableTitles.Last() != title) bottomBorder += GetPart(BoxBorderPart.Cross);
+            }
+            InsertAt(this.GetLeft, this.GetTop + 2, string.Concat(bottomBorder + GetPart(BoxBorderPart.RightMiddle)), _color);
+            startHeight = this.GetHeight + 3;
+            this.SetHeight = this.GetHeight + 3;
+        }
 
-            // Building table bottom
-            InsertAt(this.GetLeft, this.GetTop + 3, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), text.Length)) + GetPart(BoxBorderPart.BottomRight) + "\n")), _color);
+        internal void CreateTableBottom(ConsoleColor _color = ConsoleColor.White)
+        {
+            // bottom border
+            string bottomBorder = GetPart(BoxBorderPart.BottomLeft);
+            foreach (string title in tableTitles)
+            {
+                bottomBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.difference));
+                if (tableTitles.Last() != title) bottomBorder += GetPart(BoxBorderPart.BottomMiddle);
+            }
+            InsertAt(this.GetLeft, this.GetTop + this.GetHeight, string.Concat(bottomBorder + GetPart(BoxBorderPart.BottomRight)), _color);
+            this.SetHeight = this.GetHeight + 1;
+        }
+
+        internal static void UpdateTableBottom(Table _table)
+        {
+            ClearArea(_table.GetLeft, _table.GetTop + _table.GetHeight, _table.GetWidth - _table.GetLeft, 3);
+            _table.CreateTableBottom();
         }
     }
 }
