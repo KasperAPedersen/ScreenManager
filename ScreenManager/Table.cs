@@ -13,46 +13,42 @@ namespace ScreenManager
     {
         private readonly int difference = 0;
         private readonly string[] tableTitles;
-        private readonly string[,] tableContents;
         private int startHeight = 0;
 
         public string[] GetTitles { get { return tableTitles; } }
-        public string[,] GetContents { get { return tableContents; } }
         public int GetStartHeight { get { return startHeight; } }
         public int GetDifference { get { return difference; } }
 
-        internal Table(int _left, int _top, int _width, int _height, string[] _tableTitles, string[,] _tableContents, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _width, _height)
+        internal Table(int _left, int _top, int _width, int _height, string[] _tableTitles, ConsoleColor _color = ConsoleColor.White) : base(_left, _top, _width, _height)
         {
             this.tableTitles = _tableTitles;
-            this.tableContents = _tableContents;
             this.difference = this.GetWidth / this.tableTitles.Length - 1;
 
             // Build header
             CreateTableHeader(_color);
 
             // Build content
-            //CreateTableContent();
+            CreateTableContent(_height);
 
             // Building bottom
             CreateTableBottom(_color);
         }
 
-        internal void CreateTableContent(ConsoleColor _color = ConsoleColor.White)
+        internal void CreateTableContent(int _height, ConsoleColor _color = ConsoleColor.White)
         {
-            int newHeight = this.GetHeight;
-            for (int i = 0; i < this.tableContents.GetLength(0); i++)
+            for(int i = 0; i < _height; i++)
             {
                 string text = "";
-                for (int o = 0; o < this.tableContents.GetLength(1); o++)
+
+                for (int o = 0; i < this.tableTitles.Length; o++)
                 {
-                    text += Aligner.Align(this.tableContents[i,o], Alignment.Center, this.difference, " ");
+                    text += Aligner.Align(" ", Alignment.Center, this.GetDifference, " ");
                     text += GetPart(BoxBorderPart.Middle);
                 }
+
                 text = text.Remove(text.Length - 1, 1);
-                InsertAt(this.GetLeft, this.GetTop + newHeight, (string.Concat(GetPart(BoxBorderPart.Left) + text + GetPart(BoxBorderPart.Right))), _color);
-                newHeight++;
+                InsertAt(this.GetLeft, this.GetTop + 3 + i, (string.Concat(GetPart(BoxBorderPart.Left) + text + GetPart(BoxBorderPart.Right))), _color);
             }
-            this.SetHeight = newHeight;
         }
 
         internal void CreateTableHeader(ConsoleColor _color = ConsoleColor.White) 
@@ -90,7 +86,6 @@ namespace ScreenManager
 
         internal void CreateTableBottom(ConsoleColor _color = ConsoleColor.White)
         {
-            // bottom border
             string bottomBorder = GetPart(BoxBorderPart.BottomLeft);
             foreach (string title in tableTitles)
             {

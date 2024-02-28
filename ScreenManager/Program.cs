@@ -7,11 +7,7 @@ Box innerMarginBox = new(cWidth - 5, cHeight - 4, 1, 1, false);
 Button button = new(cWidth - 21, 2, "Create User", 1);
 TextField innerMarginTitle = new(3, 2, "CRUDapp", ConsoleColor.Red);
 string[] titles = ["ID", "Fornavn", "Efternavn", "EmailAdr", "Mobil", "Addresse", "Titel", "Slet", "Edit"];
-string[,] contents = {  {"abcafjk", "def", "ghi", "jkl", "opq", "a", "a", "a", "a"},
-                                    {"abc", "def", "ghi", "jkl", "opq", "a", "a", "a", "a"},
-                                    {"abc", "def", "ghi", "jkl", "opq", "a", "a", "a", "a"},
-                                    {"abc", "def", "ghi", "jkl", "opq", "a", "a", "a", "a"}};
-Table testTable = new(2, 5, cWidth - 6, 0, titles, contents);
+Table testTable = new(2, 5, cWidth - 6, 30, titles);
 List<TableContent> content = [];
 
 //ScreenManager.Object.ClearArea(button.GetLeft, button.GetTop, button.GetWidth, button.GetHeight);
