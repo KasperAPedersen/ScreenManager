@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ScreenManager
 {
-    internal class Object
+    internal abstract class Object
     {
         public static int objectCounter = 0;
         private readonly int left = 0, top = 0;
