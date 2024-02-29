@@ -15,17 +15,22 @@ while(bKeepRunning)
 {
     Console.ForegroundColor = ConsoleColor.Black;
     Console.SetCursorPosition(cWidth - 1, cHeight - 3);
-    Console.CursorVisible = false;
+    //Console.CursorVisible = false;
     switch (Console.ReadKey().Key)
     {
         case ConsoleKey.F1:
             bKeepRunning = false;
             break;
         case ConsoleKey.C:
-            Box tt1 = new(50, 20, cWidth / 2 - 25, cHeight / 2 - 10, false);
-            new Box(25, 4, tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 9, false);
-            new Box(25, 4, tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 8, false);
-            
+            string[] labels = {"Fornavn", "Efternavn", "EmailAdr", "Mobil", "Adresse", "Titel"};
+            ScreenManager.Object.ClearArea(cWidth / 2 - 25, cHeight / 2 - 10, 50, 21);
+            Box tt1 = new(50, 21, cWidth / 2 - 25, cHeight / 2 - 10, false);
+            for(int i = 0; i < 6; i++)
+            {
+                new Box(25, 4, tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 9 + (i*3), false);
+                new TextField(tt1.GetLeft + 1, cHeight / 2 - 8 + (i*3), Aligner.Align(labels[i], Alignment.Center, tt1.GetWidth - 27, " "));
+            }
+            tt.UpdateTable(tt.GetActive(), InputField.Run(6, tt1.GetLeft + tt1.GetWidth - 24, cHeight / 2 - 8, cWidth, cHeight));
 
             bToggleCreateUserButton = !bToggleCreateUserButton;
             break;
@@ -37,9 +42,6 @@ while(bKeepRunning)
             break;
         case ConsoleKey.Delete:
             tt.RemoveTableRow(tt.GetActive());
-            break;
-        case ConsoleKey.I:
-            tt.UpdateTable(tt.GetActive(), ["a", "aa", "aaa", "aaaa", "aaaaa", "aaaa", "aaa", "aa", "a"]);
             break;
         default:
             break;

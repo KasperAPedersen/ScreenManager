@@ -10,6 +10,9 @@ namespace ScreenManager
     internal class Table : Object
     {
         private readonly static int MaxHeight = 36;
+        private static int id = 0;
+
+        public static int GetIdCounter () { return id; }
 
         private int active, heightCounter = 0;
         private readonly int paddingDifference = 0;
@@ -93,9 +96,14 @@ namespace ScreenManager
 
         internal void UpdateTable(int _active, string[]? contentLine = null)
         {
+
             Object.ClearArea(this.GetLeft, this.GetTop, this.GetWidth, this.GetHeight);
 
-            if (contentLine != null && (this.GetHeight + 1) < MaxHeight) content.Add(contentLine);
+            if (contentLine != null && (this.GetHeight + 1) < MaxHeight)
+            {
+                id++;
+                content.Add(contentLine);
+            }
             if (_active != this.active) this.active = _active > content.Count - 1 ? 0 : (_active < 0 ? content.Count - 1 : _active);
 
             this.heightCounter = 0;
@@ -105,6 +113,7 @@ namespace ScreenManager
             CreateTableBottom();
 
             this.SetHeight = heightCounter;
+            
         }
 
         internal void RemoveTableRow(int _active)
@@ -114,6 +123,7 @@ namespace ScreenManager
                 content.RemoveAt(_active);
                 if ((_active - 1) > 0) this.active = --_active;
                 UpdateTable(this.active);
+                id--;
             }
         }
     }
