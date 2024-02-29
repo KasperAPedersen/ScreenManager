@@ -50,7 +50,7 @@ namespace ScreenManager
                         keepRunning = false;
                     }
                 }
-                new TextField(_left, _top + (i * 3), tmp);
+                _ = new TextField(_left, _top + (i * 3), tmp);
                 newUserContent.Add(tmp);
             }
 
