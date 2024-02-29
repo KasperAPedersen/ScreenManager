@@ -13,22 +13,30 @@ while(bKeepRunning)
 {
     Console.ForegroundColor = ConsoleColor.Black;
     Console.SetCursorPosition(cWidth - 1, cHeight - 3);
-    //Console.CursorVisible = false;
+    Console.CursorVisible = false;
     switch (Console.ReadKey().Key)
     {
         case ConsoleKey.F1:
             bKeepRunning = false;
             break;
         case ConsoleKey.C:
+            Console.CursorVisible= true;
             string[] labels = ["Fornavn", "Efternavn", "EmailAdr", "Mobil", "Adresse", "Titel"];
             ScreenManager.Object.ClearArea(cWidth / 2 - 25, cHeight / 2 - 10, 50, 21);
             Box tt1 = new(50, 21, cWidth / 2 - 25, cHeight / 2 - 10, false);
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i < 5; i++)
             {
                 _ = new Box(25, 4, tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 9 + (i*3), false);
                 _ = new TextField(tt1.GetLeft + 1, cHeight / 2 - 8 + (i*3), Aligner.Align(labels[i], Alignment.Center, tt1.GetWidth - 27, " "));
             }
-            tt.UpdateTable(tt.GetActive(), InputField.Run(6, tt1.GetLeft + tt1.GetWidth - 24, cHeight / 2 - 8, cWidth, cHeight));
+
+            _ = new TextField(tt1.GetLeft + 1, cHeight / 2 - 8 + 15, Aligner.Align("Titel", Alignment.Center, tt1.GetWidth - 27, " "));
+            ComboBox cb = new(tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 9 + 15, 23, 4);
+
+            string[] inputFieldResult = InputField.Run(6, tt1.GetLeft + tt1.GetWidth - 24, cHeight / 2 - 8, cWidth, cHeight);
+
+
+            tt.UpdateTable(tt.GetActive(), inputFieldResult);
 
             bToggleCreateUserButton = !bToggleCreateUserButton;
             break;
