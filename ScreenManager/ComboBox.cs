@@ -34,7 +34,7 @@ namespace ScreenManager
 
         internal void OpenComboBox()
         {
-            InsertAt(this.GetLeft, this.GetTop + 1, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.UpArrow), Alignment.Center, 3, " ") + Border(Get.Right));
+            InsertAt(this.GetLeft, this.GetTop + 1, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.DownArrow), Alignment.Center, 3, " ") + Border(Get.Right));
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight, this.GetWidth - 5, currentHeight + 3);
             InsertAt(this.GetLeft, this.GetTop + currentHeight++ -1, string.Concat(Border(Get.TopLeft)) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight));
 
@@ -98,8 +98,12 @@ namespace ScreenManager
                 Get.BottomRight => "┘",
                 Get.LeftMiddle => "├",
                 Get.RightMiddle => "┤",
-                Get.DownArrow => "\u2193",
-                Get.UpArrow => "\u2191",
+                Get.Cross => "┼",
+                Get.Middle => "│",
+                Get.TopMiddle => "┬",
+                Get.BottomMiddle => "┴",
+                Get.DownArrow => "˅",
+                Get.UpArrow => "˄",
                 _ => throw new InvalidOperationException("Unknown border part."),
             };
         }

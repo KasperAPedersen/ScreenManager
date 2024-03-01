@@ -1,5 +1,7 @@
 ﻿using ScreenManager;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
 int cWidth = Console.WindowWidth, cHeight = Console.WindowHeight;
 
 _ = new Box(cWidth - 3, cHeight - 2, 0, 0, false);
