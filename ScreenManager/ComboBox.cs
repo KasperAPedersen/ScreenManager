@@ -10,14 +10,13 @@ namespace ScreenManager
     {
         private int currentHeight = 0, active = 0;
         private string[] options = ["Mr.", "Mrs.", "Ms."];
-        private string chosenOption;
+        private string chosenOption = "Mr.";
 
         public string GetChosen { get { return chosenOption; } }
 
         public ComboBox(int _left, int _top, int _width, int _height) : base(_left, _top, _width, _height)
         {
             CreateComboBox();
-            //
         }
 
         internal void Run()
@@ -29,12 +28,13 @@ namespace ScreenManager
         internal void CreateComboBox()
         {
             InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 5)) + GetPart(BoxBorderPart.TopRight) + GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), 3)) + GetPart(BoxBorderPart.TopRight)));
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, GetPart(BoxBorderPart.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right) + GetPart(BoxBorderPart.Left) + Aligner.Align("^", Alignment.Center, 3, " ") + GetPart(BoxBorderPart.Right));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, GetPart(BoxBorderPart.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right) + GetPart(BoxBorderPart.Left) + Aligner.Align(GetPart(BoxBorderPart.DownArrow), Alignment.Center, 3, " ") + GetPart(BoxBorderPart.Right));
             InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight)) + GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), 3)) + GetPart(BoxBorderPart.BottomRight));
         }
 
         internal void OpenComboBox()
         {
+            InsertAt(this.GetLeft, this.GetTop + 1, GetPart(BoxBorderPart.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right) + GetPart(BoxBorderPart.Left) + Aligner.Align(GetPart(BoxBorderPart.UpArrow), Alignment.Center, 3, " ") + GetPart(BoxBorderPart.Right));
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight, this.GetWidth - 5, currentHeight + 3);
             InsertAt(this.GetLeft, this.GetTop + currentHeight++ -1, string.Concat(GetPart(BoxBorderPart.TopLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 5)) + GetPart(BoxBorderPart.TopRight));
 
@@ -49,7 +49,6 @@ namespace ScreenManager
         internal void RemoveComboBox()
         {
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight + 1, this.GetWidth - 3, options.Length);
-
         }
 
         internal void UpdateComboBox()
@@ -68,16 +67,12 @@ namespace ScreenManager
                         this.active = this.active <= 0 ? this.options.Length - 1: this.active - 1;
                         break;
                     case ConsoleKey.DownArrow:
-                        // if (_active != this.active) this.active = _active > content.Count - 1 ? 0 : (_active < 0 ? content.Count - 1 : _active);
                         this.active = this.active >= options.Length - 1 ? 0 : this.active + 1;
                         break;
                     default:
                         break;
                 }
                 
-                // Remove old dropdown & build new with updated this.active
-                // InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(GetPart(BoxBorderPart.BottomLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight));
-                //Object.ClearArea(this.GetLeft, this.GetTop + currentHeight - options.Length - 3, this.GetWidth - 3, currentHeight - 1);
                 currentHeight = currentHeight - options.Length - 2;
                 if (!keepRunning)
                 {
@@ -104,7 +99,9 @@ namespace ScreenManager
             Cross,
             Middle,
             TopMiddle,
-            BottomMiddle
+            BottomMiddle,
+            DownArrow,
+            UpArrow
         }
 
         static public string GetPart(BoxBorderPart _part)
@@ -125,6 +122,8 @@ namespace ScreenManager
                 BoxBorderPart.Middle => "│",
                 BoxBorderPart.TopMiddle => "┬",
                 BoxBorderPart.BottomMiddle => "┴",
+                BoxBorderPart.DownArrow => "\u2193",
+                BoxBorderPart.UpArrow => "\u2191",
                 _ => throw new InvalidOperationException("Unknown border part."),
             };
         }

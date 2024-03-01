@@ -8,7 +8,7 @@ namespace ScreenManager
 {
     internal class InputField
     {
-        private static string gender;
+        private static string gender = "Mr.";
         private static List<string> newUserContent = [];
         public static string _gender { get { return gender; } set { gender = value;  } }
         internal static void Run(int _inputFields, int _left, int _top)

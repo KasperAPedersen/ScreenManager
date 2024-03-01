@@ -21,6 +21,8 @@ while(bKeepRunning)
             break;
         case ConsoleKey.C:
             Console.CursorVisible= true;
+            _ = new Button(cWidth - 21, 2, "Create User", 1, ConsoleColor.Red);
+
             string[] labels = ["Fornavn", "Efternavn", "EmailAdr", "Mobil", "Adresse", "Titel"];
             ScreenManager.Object.ClearArea(cWidth / 2 - 25, cHeight / 2 - 10, 50, 21);
             Box tt1 = new(50, 21, cWidth / 2 - 25, cHeight / 2 - 10, false);
@@ -42,6 +44,7 @@ while(bKeepRunning)
 
             tt.UpdateTable(tt.GetActive(), inputFieldResult);
 
+            _ = new Button(cWidth - 21, 2, "Create User", 1);
             bToggleCreateUserButton = !bToggleCreateUserButton;
             break;
         case ConsoleKey.DownArrow:
