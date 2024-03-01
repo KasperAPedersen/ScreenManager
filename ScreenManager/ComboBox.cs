@@ -10,11 +10,18 @@ namespace ScreenManager
     {
         private int currentHeight = 0, active = 0;
         private string[] options = ["Mr.", "Mrs.", "Ms."];
+        private string chosenOption;
 
+        public string GetChosen { get { return chosenOption; } }
 
         public ComboBox(int _left, int _top, int _width, int _height) : base(_left, _top, _width, _height)
         {
             CreateComboBox();
+            //
+        }
+
+        internal void Run()
+        {
             OpenComboBox();
             UpdateComboBox();
         }
@@ -39,6 +46,12 @@ namespace ScreenManager
             InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(GetPart(BoxBorderPart.BottomLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight));
         }
 
+        internal void RemoveComboBox()
+        {
+            Object.ClearArea(this.GetLeft, this.GetTop + currentHeight + 1, this.GetWidth - 3, options.Length);
+
+        }
+
         internal void UpdateComboBox()
         {
             bool keepRunning = true;
@@ -48,6 +61,7 @@ namespace ScreenManager
                 switch (input)
                 {
                     case ConsoleKey.Enter:
+                        chosenOption = options[active];
                         keepRunning = false;
                         break;
                     case ConsoleKey.UpArrow:
@@ -60,8 +74,18 @@ namespace ScreenManager
                     default:
                         break;
                 }
-
+                
                 // Remove old dropdown & build new with updated this.active
+                // InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(GetPart(BoxBorderPart.BottomLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight));
+                //Object.ClearArea(this.GetLeft, this.GetTop + currentHeight - options.Length - 3, this.GetWidth - 3, currentHeight - 1);
+                currentHeight = currentHeight - options.Length - 2;
+                if (!keepRunning)
+                {
+                    RemoveComboBox();
+                } else
+                {
+                    OpenComboBox();
+                }
             }
         }
 

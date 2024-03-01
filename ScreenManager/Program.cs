@@ -32,9 +32,13 @@ while(bKeepRunning)
 
             _ = new TextField(tt1.GetLeft + 1, cHeight / 2 - 8 + 15, Aligner.Align("Titel", Alignment.Center, tt1.GetWidth - 27, " "));
             ComboBox cb = new(tt1.GetLeft + tt1.GetWidth - 26, cHeight / 2 - 9 + 15, 23, 4);
+            InputField.Run(6, tt1.GetLeft + tt1.GetWidth - 24, cHeight / 2 - 8);
+            cb.Run();
+            
+            _ = new TextField(tt1.GetLeft + tt1.GetWidth - 25, cHeight / 2 - 9 + 16, Aligner.Align(cb.GetChosen, Alignment.Center, tt1.GetWidth - 32, " "));
 
-            string[] inputFieldResult = InputField.Run(6, tt1.GetLeft + tt1.GetWidth - 24, cHeight / 2 - 8, cWidth, cHeight);
-
+            string[] inputFieldResult = InputField.Get(cWidth, cHeight, cb.GetChosen);
+            
 
             tt.UpdateTable(tt.GetActive(), inputFieldResult);
 

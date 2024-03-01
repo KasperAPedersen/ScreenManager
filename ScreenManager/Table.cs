@@ -113,7 +113,6 @@ namespace ScreenManager
             CreateTableBottom();
 
             this.SetHeight = heightCounter;
-            
         }
 
         internal void RemoveTableRow(int _active)
