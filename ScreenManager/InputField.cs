@@ -74,6 +74,7 @@ namespace ScreenManager
                 }
 
             }
+            newUserContent = [];
 
             ScreenManager.Object.ClearArea(cWidth / 2 - 25, cHeight / 2 - 10, 50, 21);
             return aUserContent;

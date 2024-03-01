@@ -20,9 +20,25 @@ namespace ScreenManager
             this.padding = _padding;
             this.text = _text;
 
-            InsertAt(this.GetLeft, this.GetTop, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top),this.text.Length + (this.padding * 2))) + GetPart(BoxBorderPart.TopRight) + "\n")), _color);
-            InsertAt(this.GetLeft, this.GetTop + 1, (string.Concat(GetPart(BoxBorderPart.Left) + Aligner.Align(text,Alignment.Center, (this.text.Length + (this.padding * 2)), " ") + GetPart(BoxBorderPart.Right))), _color);
-            InsertAt(this.GetLeft, this.GetTop + 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.text.Length + (this.padding * 2))) + GetPart(BoxBorderPart.BottomRight) + "\n")), _color);
+            InsertAt(this.GetLeft, this.GetTop, (string.Concat(Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top),this.text.Length + (this.padding * 2))) + Border(Get.TopRight) + "\n")), _color);
+            InsertAt(this.GetLeft, this.GetTop + 1, (string.Concat(Border(Get.Left) + Aligner.Align(text,Alignment.Center, (this.text.Length + (this.padding * 2)), " ") + Border(Get.Right))), _color);
+            InsertAt(this.GetLeft, this.GetTop + 2, (string.Concat(Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.text.Length + (this.padding * 2))) + Border(Get.BottomRight) + "\n")), _color);
+        }
+
+        internal override string Border(Get _part)
+        {
+            return _part switch
+            {
+                Get.TopLeft => "┌",
+                Get.Top => "─",
+                Get.TopRight => "┐",
+                Get.Left => "│",
+                Get.Right => "│",
+                Get.BottomLeft => "└",
+                Get.Bottom => "─",
+                Get.BottomRight => "┘",
+                _ => throw new InvalidOperationException("Unknown border part."),
+            };
         }
     }
 }

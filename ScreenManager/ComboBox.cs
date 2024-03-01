@@ -27,23 +27,23 @@ namespace ScreenManager
 
         internal void CreateComboBox()
         {
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 5)) + GetPart(BoxBorderPart.TopRight) + GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), 3)) + GetPart(BoxBorderPart.TopRight)));
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, GetPart(BoxBorderPart.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right) + GetPart(BoxBorderPart.Left) + Aligner.Align(GetPart(BoxBorderPart.DownArrow), Alignment.Center, 3, " ") + GetPart(BoxBorderPart.Right));
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight)) + GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), 3)) + GetPart(BoxBorderPart.BottomRight));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight) + Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), 3)) + Border(Get.TopRight)));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.DownArrow), Alignment.Center, 3, " ") + Border(Get.Right));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.GetWidth - 5)) + Border(Get.BottomRight)) + Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), 3)) + Border(Get.BottomRight));
         }
 
         internal void OpenComboBox()
         {
-            InsertAt(this.GetLeft, this.GetTop + 1, GetPart(BoxBorderPart.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right) + GetPart(BoxBorderPart.Left) + Aligner.Align(GetPart(BoxBorderPart.UpArrow), Alignment.Center, 3, " ") + GetPart(BoxBorderPart.Right));
+            InsertAt(this.GetLeft, this.GetTop + 1, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.UpArrow), Alignment.Center, 3, " ") + Border(Get.Right));
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight, this.GetWidth - 5, currentHeight + 3);
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++ -1, string.Concat(GetPart(BoxBorderPart.TopLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 5)) + GetPart(BoxBorderPart.TopRight));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++ -1, string.Concat(Border(Get.TopLeft)) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight));
 
             for (int i = 0; i < options.Length; i++)
             {
-                InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, GetPart(BoxBorderPart.Left) + Aligner.Align(options[i], Alignment.Center, this.GetWidth - 5, " ") + GetPart(BoxBorderPart.Right), i == this.active? ConsoleColor.Red : ConsoleColor.White);
+                InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, Border(Get.Left) + Aligner.Align(options[i], Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right), i == this.active? ConsoleColor.Red : ConsoleColor.White);
                 
             }
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(GetPart(BoxBorderPart.BottomLeft)) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 5)) + GetPart(BoxBorderPart.BottomRight));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(Border(Get.BottomLeft)) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.GetWidth - 5)) + Border(Get.BottomRight));
         }
 
         internal void RemoveComboBox()
@@ -84,46 +84,22 @@ namespace ScreenManager
             }
         }
 
-        internal enum BoxBorderPart
-        {
-            TopLeft,
-            Top,
-            TopRight,
-            Left,
-            Right,
-            BottomLeft,
-            Bottom,
-            BottomRight,
-            LeftMiddle,
-            RightMiddle,
-            Cross,
-            Middle,
-            TopMiddle,
-            BottomMiddle,
-            DownArrow,
-            UpArrow
-        }
-
-        static public string GetPart(BoxBorderPart _part)
+        internal override string Border(Get _part)
         {
             return _part switch
             {
-                BoxBorderPart.TopLeft => "┌",
-                BoxBorderPart.Top => "─",
-                BoxBorderPart.TopRight => "┐",
-                BoxBorderPart.Left => "│",
-                BoxBorderPart.Right => "│",
-                BoxBorderPart.BottomLeft => "└",
-                BoxBorderPart.Bottom => "─",
-                BoxBorderPart.BottomRight => "┘",
-                BoxBorderPart.LeftMiddle => "├",
-                BoxBorderPart.RightMiddle => "┤",
-                BoxBorderPart.Cross => "┼",
-                BoxBorderPart.Middle => "│",
-                BoxBorderPart.TopMiddle => "┬",
-                BoxBorderPart.BottomMiddle => "┴",
-                BoxBorderPart.DownArrow => "\u2193",
-                BoxBorderPart.UpArrow => "\u2191",
+                Get.TopLeft => "┌",
+                Get.Top => "─",
+                Get.TopRight => "┐",
+                Get.Left => "│",
+                Get.Right => "│",
+                Get.BottomLeft => "└",
+                Get.Bottom => "─",
+                Get.BottomRight => "┘",
+                Get.LeftMiddle => "├",
+                Get.RightMiddle => "┤",
+                Get.DownArrow => "\u2193",
+                Get.UpArrow => "\u2191",
                 _ => throw new InvalidOperationException("Unknown border part."),
             };
         }

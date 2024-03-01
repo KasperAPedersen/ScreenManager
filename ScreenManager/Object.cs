@@ -44,5 +44,27 @@ namespace ScreenManager
             Console.Write(_text);
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        internal enum Get
+        {
+            TopLeft,
+            Top,
+            TopRight,
+            Left,
+            Right,
+            BottomLeft,
+            Bottom,
+            BottomRight,
+            LeftMiddle,
+            RightMiddle,
+            Cross,
+            Middle,
+            TopMiddle,
+            BottomMiddle,
+            DownArrow,
+            UpArrow
+        }
+
+        internal abstract string Border(Get _part);
     }
 }

@@ -16,54 +16,30 @@ namespace ScreenManager
             }
             else
             {
-                InsertAt(this.GetLeft, this.GetTop, (string.Concat(GetPart(BoxBorderPart.TopLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Top), this.GetWidth - 2)) + GetPart(BoxBorderPart.TopRight) + "\n")), _color);
+                InsertAt(this.GetLeft, this.GetTop, (string.Concat(Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 2)) + Border(Get.TopRight) + "\n")), _color);
 
                 for (int i = 1; i < this.GetHeight - 1; i++)
                 {
-                    InsertAt(this.GetLeft, this.GetTop + i, GetPart(BoxBorderPart.Left), _color);
-                    InsertAt(this.GetLeft + this.GetWidth - 1, this.GetTop + i, GetPart(BoxBorderPart.Right), _color);
+                    InsertAt(this.GetLeft, this.GetTop + i, Border(Get.Left), _color);
+                    InsertAt(this.GetLeft + this.GetWidth - 1, this.GetTop + i, Border(Get.Right), _color);
                 }
 
-                InsertAt(this.GetLeft, this.GetTop + this.GetHeight - 2, (string.Concat(GetPart(BoxBorderPart.BottomLeft) + string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.GetWidth - 2)) + GetPart(BoxBorderPart.BottomRight) + "\n")), _color);
+                InsertAt(this.GetLeft, this.GetTop + this.GetHeight - 2, (string.Concat(Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.GetWidth - 2)) + Border(Get.BottomRight) + "\n")), _color);
             }
         }
 
-        internal enum BoxBorderPart
-        {
-            TopLeft,
-            Top,
-            TopRight,
-            Left,
-            Right,
-            BottomLeft,
-            Bottom,
-            BottomRight,
-            LeftMiddle,
-            RightMiddle,
-            Cross,
-            Middle,
-            TopMiddle,
-            BottomMiddle
-        }
-
-        static public string GetPart(BoxBorderPart _part)
+        internal override string Border(Get _part)
         {
             return _part switch
             {
-                BoxBorderPart.TopLeft => "┌",
-                BoxBorderPart.Top => "─",
-                BoxBorderPart.TopRight => "┐",
-                BoxBorderPart.Left => "│",
-                BoxBorderPart.Right => "│",
-                BoxBorderPart.BottomLeft => "└",
-                BoxBorderPart.Bottom => "─",
-                BoxBorderPart.BottomRight => "┘",
-                BoxBorderPart.LeftMiddle => "├",
-                BoxBorderPart.RightMiddle => "┤",
-                BoxBorderPart.Cross => "┼",
-                BoxBorderPart.Middle => "│",
-                BoxBorderPart.TopMiddle => "┬",
-                BoxBorderPart.BottomMiddle => "┴",
+                Get.TopLeft => "┌",
+                Get.Top => "─",
+                Get.TopRight => "┐",
+                Get.Left => "│",
+                Get.Right => "│",
+                Get.BottomLeft => "└",
+                Get.Bottom => "─",
+                Get.BottomRight => "┘",
                 _ => throw new InvalidOperationException("Unknown border part."),
             };
         }

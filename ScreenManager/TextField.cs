@@ -17,5 +17,10 @@ namespace ScreenManager
             this.text = _text;
             InsertAt(this.GetLeft, this.GetTop, this.text, _color);
         }
+
+        internal override string Border(Get _part)
+        {
+            return "";
+        }
     }
 }

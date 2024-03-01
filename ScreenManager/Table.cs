@@ -35,33 +35,33 @@ namespace ScreenManager
         internal void CreateTableHeader(ConsoleColor _color = ConsoleColor.White)
         {
             // top border
-            string topBorder = GetPart(BoxBorderPart.TopLeft);
+            string topBorder = Border(Get.TopLeft);
             foreach (string title in headerTitle)
             {
-                topBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.paddingDifference));
-                if (headerTitle.Last() != title) topBorder += GetPart(BoxBorderPart.TopMiddle);
+                topBorder += string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.paddingDifference));
+                if (headerTitle.Last() != title) topBorder += Border(Get.TopMiddle);
             }
             this.SetWidth = topBorder.Length + 1;
-            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(topBorder + GetPart(BoxBorderPart.TopRight)), _color);
+            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(topBorder + Border(Get.TopRight)), _color);
 
             // header content
-            string headerContent = GetPart(BoxBorderPart.Middle);
+            string headerContent = Border(Get.Middle);
             foreach (string title in headerTitle)
             {
                 headerContent += Aligner.Align(title, Alignment.Center, this.paddingDifference, " ");
-                headerContent += GetPart(BoxBorderPart.Middle);
+                headerContent += Border(Get.Middle);
             }
 
             InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, headerContent, _color);
 
             // bottom border
-            string bottomBorder = GetPart(BoxBorderPart.LeftMiddle);
+            string bottomBorder = Border(Get.LeftMiddle);
             foreach (string title in headerTitle)
             {
-                bottomBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.paddingDifference));
-                if (headerTitle.Last() != title) bottomBorder += GetPart(BoxBorderPart.Cross);
+                bottomBorder += string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.paddingDifference));
+                if (headerTitle.Last() != title) bottomBorder += Border(Get.Cross);
             }
-            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(bottomBorder + GetPart(BoxBorderPart.RightMiddle)), _color);
+            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(bottomBorder + Border(Get.RightMiddle)), _color);
         }
 
         internal void CreateTableContent(ConsoleColor _color = ConsoleColor.White)
@@ -74,10 +74,10 @@ namespace ScreenManager
                     for (int o = 0; o < 9; o++)
                     {
                         text += Aligner.Align(content[i][o], Alignment.Center, this.paddingDifference, " ");
-                        text += GetPart(BoxBorderPart.Middle);
+                        text += Border(Get.Middle);
                     }
                     text = text.Remove(text.Length - 1, 1);
-                    InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, (string.Concat(GetPart(BoxBorderPart.Left) + text + GetPart(BoxBorderPart.Right))), this.active == i ? ConsoleColor.Red : _color);
+                    InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, (string.Concat(Border(Get.Left) + text + Border(Get.Right))), this.active == i ? ConsoleColor.Red : _color);
 
                 }
             }
@@ -85,13 +85,13 @@ namespace ScreenManager
 
         internal void CreateTableBottom(ConsoleColor _color = ConsoleColor.White)
         {
-            string bottomBorder = GetPart(BoxBorderPart.BottomLeft);
+            string bottomBorder = Border(Get.BottomLeft);
             foreach (string title in this.headerTitle)
             {
-                bottomBorder += string.Concat(Enumerable.Repeat(GetPart(BoxBorderPart.Bottom), this.paddingDifference));
-                if (this.headerTitle.Last() != title) bottomBorder += GetPart(BoxBorderPart.BottomMiddle);
+                bottomBorder += string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.paddingDifference));
+                if (this.headerTitle.Last() != title) bottomBorder += Border(Get.BottomMiddle);
             }
-            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(bottomBorder + GetPart(BoxBorderPart.BottomRight)), _color);
+            InsertAt(this.GetLeft, this.GetTop + this.heightCounter++, string.Concat(bottomBorder + Border(Get.BottomRight)), _color);
         }
 
         internal void UpdateTable(int _active, string[]? contentLine = null)
@@ -124,6 +124,28 @@ namespace ScreenManager
                 UpdateTable(this.active);
                 id--;
             }
+        }
+
+        internal override string Border(Get _part)
+        {
+            return _part switch
+            {
+                Get.TopLeft => "┌",
+                Get.Top => "─",
+                Get.TopRight => "┐",
+                Get.Left => "│",
+                Get.Right => "│",
+                Get.BottomLeft => "└",
+                Get.Bottom => "─",
+                Get.BottomRight => "┘",
+                Get.LeftMiddle => "├",
+                Get.RightMiddle => "┤",
+                Get.Cross => "┼",
+                Get.Middle => "│",
+                Get.TopMiddle => "┬",
+                Get.BottomMiddle => "┴",
+                _ => throw new InvalidOperationException("Unknown border part."),
+            };
         }
     }
 }
