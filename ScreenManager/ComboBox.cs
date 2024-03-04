@@ -9,14 +9,16 @@ namespace ScreenManager
     internal class ComboBox : Object
     {
         private int currentHeight = 0, active = 0;
-        private string[] options = ["Mr.", "Mrs.", "Ms."];
+        private readonly string[] options = ["Mr.", "Mrs.", "Ms."];
         private string chosenOption = "Mr.";
 
         public string GetChosen { get { return chosenOption; } }
 
         public ComboBox(int _left, int _top, int _width, int _height) : base(_left, _top, _width, _height)
         {
-            CreateComboBox();
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight) + Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), 3)) + Border(Get.TopRight)));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.DownArrow), Alignment.Center, 3, " ") + Border(Get.Right));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.GetWidth - 5)) + Border(Get.BottomRight)) + Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), 3)) + Border(Get.BottomRight));
         }
 
         internal void Run()
@@ -25,18 +27,11 @@ namespace ScreenManager
             UpdateComboBox();
         }
 
-        internal void CreateComboBox()
-        {
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight) + Border(Get.TopLeft) + string.Concat(Enumerable.Repeat(Border(Get.Top), 3)) + Border(Get.TopRight)));
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.DownArrow), Alignment.Center, 3, " ") + Border(Get.Right));
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++, string.Concat(Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), this.GetWidth - 5)) + Border(Get.BottomRight)) + Border(Get.BottomLeft) + string.Concat(Enumerable.Repeat(Border(Get.Bottom), 3)) + Border(Get.BottomRight));
-        }
-
         internal void OpenComboBox()
         {
             InsertAt(this.GetLeft, this.GetTop + 1, Border(Get.Left) + Aligner.Align("", Alignment.Center, this.GetWidth - 5, " ") + Border(Get.Right) + Border(Get.Left) + Aligner.Align(Border(Get.DownArrow), Alignment.Center, 3, " ") + Border(Get.Right));
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight, this.GetWidth - 5, currentHeight + 3);
-            InsertAt(this.GetLeft, this.GetTop + currentHeight++ -1, string.Concat(Border(Get.TopLeft)) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight));
+            InsertAt(this.GetLeft, this.GetTop + currentHeight++ - 1, string.Concat(Border(Get.TopLeft)) + string.Concat(Enumerable.Repeat(Border(Get.Top), this.GetWidth - 5)) + Border(Get.TopRight));
 
             for (int i = 0; i < options.Length; i++)
             {
@@ -55,6 +50,7 @@ namespace ScreenManager
             bool keepRunning = true;
             while(keepRunning)
             {
+                Console.ForegroundColor = ConsoleColor.Black;
                 ConsoleKey input = Console.ReadKey().Key;
                 switch (input)
                 {
