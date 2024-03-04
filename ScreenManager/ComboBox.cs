@@ -50,7 +50,6 @@ namespace ScreenManager
         {
             Object.ClearArea(this.GetLeft, this.GetTop + currentHeight + 1, this.GetWidth - 3, options.Length);
         }
-
         internal void UpdateComboBox()
         {
             bool keepRunning = true;
