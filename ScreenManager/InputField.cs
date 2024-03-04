@@ -13,6 +13,7 @@ namespace ScreenManager
         public static string _gender { get { return gender; } set { gender = value;  } }
         internal static void Run(int _inputFields, int _left, int _top)
         {
+            Console.CursorVisible = true;
             newUserContent.Add((Table.GetIdCounter() + 1).ToString());
             for (int i = 0; i < _inputFields; i++)
             {
@@ -57,6 +58,7 @@ namespace ScreenManager
 
             newUserContent.Add("Slet");
             newUserContent.Add("Edit");
+            Console.CursorVisible = false;
         }
 
         internal static string[] Get(int cWidth, int cHeight, string _gender)
